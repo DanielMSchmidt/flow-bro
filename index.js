@@ -19,7 +19,12 @@ cli
         }
 
         const amount = rawAmount ? parseInt(rawAmount) : 20;
-
+        console.log(
+            'This may take a while, concurrency is limited to reduce the failure rate.'
+        );
+        console.log(
+            'Why dont you go get a coffee, I will do the heavy lifting!\n'
+        );
         getUntyped(amount)
             .then(files => {
                 console.log(
