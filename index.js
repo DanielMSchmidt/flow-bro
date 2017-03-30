@@ -27,7 +27,7 @@ cli
                 );
                 var table = new Table({
                     head: ['%', 'File'],
-                    colWidths: [100, 500],
+                    colWidths: [10, 50],
                 });
                 files.forEach(({file, result}) => table.push([file, result]));
 
