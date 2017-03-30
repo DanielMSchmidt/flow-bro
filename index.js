@@ -5,7 +5,7 @@ var fs = require('fs');
 var getUntyped = require('./get-untyped');
 
 const checkForFlowToExist = () => {
-    fs.existsSync('./node_modules/.bin/flow');
+    return fs.existsSync('./node_modules/.bin/flow');
 };
 
 cli
@@ -14,6 +14,7 @@ cli
     .action(function(rawAmount) {
         if (!checkForFlowToExist()) {
             console.log('We expect a local version of flow');
+            return;
         }
 
         const amount = rawAmount ? parseInt(rawAmount) : 20;
