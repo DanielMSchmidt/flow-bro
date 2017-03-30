@@ -12,7 +12,9 @@ cli
     .command('get-untyped <number>')
     .description('returns the X least flow-typed files')
     .action(function(rawAmount) {
-        checkForFlowToExist();
+        if (!checkForFlowToExist()) {
+            console.log('We expect a local version of flow');
+        }
 
         const amount = rawAmount ? parseInt(rawAmount) : 20;
 
