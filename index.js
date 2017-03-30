@@ -22,4 +22,4 @@ cli
         });
     });
 
-program.parse(process.argv);
+cli.parse(process.argv);
