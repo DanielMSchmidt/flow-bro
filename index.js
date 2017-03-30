@@ -3,6 +3,7 @@
 var cli = require('commander');
 var fs = require('fs');
 var getUntyped = require('./get-untyped');
+var Table = require('cli-table');
 
 const checkForFlowToExist = () => {
     return fs.existsSync('./node_modules/.bin/flow');
@@ -22,14 +23,17 @@ cli
         getUntyped(amount)
             .then(files => {
                 console.log(
-                    'The following files are the ones with the least flow coverage: \n'
+                    'The following files have the least flow coverage: \n'
                 );
-                console.log(
-                    files
-                        .map(file => `${file.file} is ${file.result}% typed`)
-                        .join('\n')
-                );
-                console.log('\n I am sure you can improve them!');
+                var table = new Table({
+                    head: ['%', 'File'],
+                    colWidths: [100, 500],
+                });
+                files.forEach(({file, result}) => table.push([file, result]));
+
+                console.log(table.toString());
+
+                console.log('\nI am sure you can improve them!');
             })
             .catch(() => {
                 console.error('Something went wrong, I am sorry :/');
