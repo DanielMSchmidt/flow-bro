@@ -29,7 +29,7 @@ cli
                     head: ['%', 'File'],
                     colWidths: [10, 50],
                 });
-                files.forEach(({file, result}) => table.push([file, result]));
+                files.forEach(({file, result}) => table.push([result, file]));
 
                 console.log(table.toString());
 
