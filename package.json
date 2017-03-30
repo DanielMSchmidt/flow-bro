@@ -1,6 +1,6 @@
 {
   "name": "flow-bro",
-  "version": "0.0.3-9",
+  "version": "0.0.3-10",
   "description": "You personal flow helper",
   "main": "index.js",
   "author": "Daniel Schmidt <danielmschmidt92@gmail.com>",
