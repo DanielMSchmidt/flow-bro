@@ -48,5 +48,6 @@ module.exports = function(amount) {
         .then(files => files.map(file => getFlowCoverage(file)))
         .then(filePromises => ThrottledPromise.all(filePromises, 4))
         .then(files => files.sort((a, b) => a.result - b.result))
-        .then(files => files.slice(0, amount));
+        .then(files => files.slice(0, amount))
+        .catch((...foo) => console.error(foo));
 };
