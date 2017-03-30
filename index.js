@@ -10,15 +10,16 @@ cli
         const amount = rawAmount ? parseInt(rawAmount) : 20;
 
         getUntyped(amount).then(files => {
-            console.log(
-                'The following files are the ones with the least flow coverage: \n'
-            );
-            console.log(
-                files
-                    .map(file => `${file.file} is ${file.result}% typed`)
-                    .join('\n')
-            );
-            console.log('\n I am sure you can improve them!');
+            console.log(files);
+            // console.log(
+            //     'The following files are the ones with the least flow coverage: \n'
+            // );
+            // console.log(
+            //     files
+            //         .map(file => `${file.file} is ${file.result}% typed`)
+            //         .join('\n')
+            // );
+            // console.log('\n I am sure you can improve them!');
         });
     });
 
