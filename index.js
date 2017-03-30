@@ -3,10 +3,16 @@
 var cli = require('commander');
 var getUntyped = require('./get-untyped');
 
+const checkForFlowToExist = () => {
+    // ./node_modules/.bin/flow
+};
+
 cli
     .command('get-untyped <number>')
     .description('returns the X least flow-typed files')
     .action(function(rawAmount) {
+        checkForFlowToExist();
+
         const amount = rawAmount ? parseInt(rawAmount) : 20;
 
         getUntyped(amount).then(files => {
