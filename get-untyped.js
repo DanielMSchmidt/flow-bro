@@ -1,5 +1,6 @@
-var exec = require('child_process').exec;
-var execFile = require('child_process').execFile;
+const exec = require('child_process').exec;
+const execFile = require('child_process').execFile;
+const ThrottledPromise = require('throttled-promise');
 
 function toPromise(fn, ...args) {
     return new Promise((resolve, reject) => {
