@@ -40,8 +40,9 @@ cli
 
                 console.log('\nI am sure you can improve them!');
             })
-            .catch(() => {
-                console.error('Something went wrong, I am sorry :/');
+            .catch(error => {
+                console.error('Something went wrong, I am sorry:');
+                console.error(error);
             });
     });
 
