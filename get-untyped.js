@@ -41,6 +41,7 @@ module.exports = function(amount) {
         .then(fileString => fileString.split('\n'))
         .then(files => files.filter(file => file !== ''))
         .then(files => files.filter(file => file.indexOf('.js') !== -1))
+        .then(files => files.filter(file => file.indexOf('flow-typed/npm') === -1))
         .then(files =>
             files.map(
                 file =>
