@@ -20,21 +20,21 @@ cli
 
         const amount = rawAmount ? parseInt(rawAmount) : 20;
         console.log(
-            'This may take a while, concurrency is limited to reduce the failure rate.'
+            'This may take a while, concurrency is limited to reduce the failure rate.',
         );
         console.log(
-            'Why dont you go get a coffee, I will do the heavy lifting!\n'
+            'Why dont you go get a coffee, I will do the heavy lifting!\n',
         );
         getUntyped(amount)
             .then(files => {
                 console.log(
-                    'The following files have the least flow coverage: \n'
+                    'The following files have the least flow coverage: \n',
                 );
                 var table = new Table({
                     head: ['%', 'File'],
                     colWidths: [10, 80],
                 });
-                files.forEach(({file, result}) => table.push([result, file]));
+                files.forEach(({ file, result }) => table.push([result, file]));
 
                 console.log(table.toString());
 
@@ -44,6 +44,20 @@ cli
                 console.error('Something went wrong, I am sorry:');
                 console.error(error);
             });
+    });
+
+cli
+    .command('translate-proptypes <file path>')
+    .description(
+        'translates React PropTypes to Flow types in an opinionated way',
+    )
+    .action(function(path) {
+        // check for file to exist
+        if (!fs.existsSync(path)) {
+            console.error('We couldnt find that file, sorry :(');
+            return;
+        }
+        // transform file
     });
 
 cli.parse(process.argv);
