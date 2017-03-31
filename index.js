@@ -20,15 +20,15 @@ cli
 
         const amount = rawAmount ? parseInt(rawAmount) : 20;
         console.log(
-            'This may take a while, concurrency is limited to reduce the failure rate.',
+            'This may take a while, concurrency is limited to reduce the failure rate.'
         );
         console.log(
-            'Why dont you go get a coffee, I will do the heavy lifting!\n',
+            'Why dont you go get a coffee, I will do the heavy lifting!\n'
         );
         getUntyped(amount)
             .then(files => {
                 console.log(
-                    'The following files have the least flow coverage: \n',
+                    'The following files have the least flow coverage: \n'
                 );
                 var table = new Table({
                     head: ['%', 'File'],
@@ -49,7 +49,7 @@ cli
 cli
     .command('translate-proptypes <file path>')
     .description(
-        'translates React PropTypes to Flow types in an opinionated way',
+        'translates React PropTypes to Flow types in an opinionated way'
     )
     .action(function(path) {
         // check for file to exist
