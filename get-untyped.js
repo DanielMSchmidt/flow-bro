@@ -1,7 +1,7 @@
 const exec = require('child_process').exec;
 const execFile = require('child_process').execFile;
 const ThrottledPromise = require('throttled-promise');
-const toPromise = requre('./to-promise');
+const toPromise = require('./to-promise');
 
 function getFlowCoverage(filePath) {
     const startValue = 'Covered:';
