@@ -11,11 +11,11 @@ module.exports = function getFlowCoverage(filePath) {
         '--json',
     ])
         .then(result => JSON.parse(result))
-        .then(({ expressions }) => {
-            return {
-                file: filePath,
-                result: expressions.covered_count /
-                    (expressions.covered_count + expressions.uncovered_count),
-            };
-        });
+        .then(({ expressions }) => ({
+            file: filePath,
+            covered: expressions.covered_count,
+            all: expressions.covered_count + expressions.uncovered_count,
+            result: expressions.covered_count /
+                (expressions.covered_count + expressions.uncovered_count),
+        }));
 };
