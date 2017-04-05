@@ -1,4 +1,4 @@
-const getFlowCoverage = require('./get-flow-file-coverage');
+const getFlowCoverage = require('./get-flow-coverage');
 
 module.exports = function(amount) {
     return getFlowCoverage()
