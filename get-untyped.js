@@ -27,8 +27,8 @@ function getFlowCoverage(filePath) {
         .then(({ expressions }) => {
             return {
                 file: filePath,
-                result: expressions.covered_count / expressions.covered_count +
-                    expressions.uncovered_count,
+                result: expressions.covered_count /
+                    (expressions.covered_count + expressions.uncovered_count),
             };
         });
 }
