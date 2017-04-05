@@ -1,4 +1,6 @@
+const execFile = require('child_process').execFile;
 const toPromise = require('./to-promise');
+
 module.exports = function getFlowCoverage(filePath) {
     const startValue = 'Covered:';
     const endValue = '\% (';

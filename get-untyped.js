@@ -1,5 +1,4 @@
 const exec = require('child_process').exec;
-const execFile = require('child_process').execFile;
 const ThrottledPromise = require('throttled-promise');
 const toPromise = require('./to-promise');
 const getFlowCoverage = require('./get-flow-coverage');
