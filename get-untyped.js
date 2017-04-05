@@ -1,15 +1,10 @@
-const exec = require('child_process').exec;
 const ThrottledPromise = require('throttled-promise');
+const getFiles = requre('./get-files');
 const toPromise = require('./to-promise');
 const getFlowCoverage = require('./get-flow-coverage');
 
 module.exports = function(amount) {
-    return toPromise(exec, 'git ls-files')
-        .then(fileString => fileString.split('\n'))
-        .then(files => files.filter(file => file !== ''))
-        .then(files => files.filter(file => file.indexOf('.js') !== -1))
-        .then(files =>
-            files.filter(file => file.indexOf('flow-typed/npm') === -1))
+    return getFiles()
         .then(files =>
             files.map(
                 file =>
