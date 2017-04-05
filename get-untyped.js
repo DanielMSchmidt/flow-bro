@@ -2,25 +2,7 @@ const exec = require('child_process').exec;
 const execFile = require('child_process').execFile;
 const ThrottledPromise = require('throttled-promise');
 const toPromise = require('./to-promise');
-
-function getFlowCoverage(filePath) {
-    const startValue = 'Covered:';
-    const endValue = '\% (';
-
-    return toPromise(execFile, './node_modules/.bin/flow', [
-        'coverage',
-        filePath,
-        '--json',
-    ])
-        .then(result => JSON.parse(result))
-        .then(({ expressions }) => {
-            return {
-                file: filePath,
-                result: expressions.covered_count /
-                    (expressions.covered_count + expressions.uncovered_count),
-            };
-        });
-}
+const getFlowCoverage = require('./get-flow-coverage');
 
 module.exports = function(amount) {
     return toPromise(exec, 'git ls-files')
