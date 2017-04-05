@@ -16,6 +16,7 @@ module.exports = function getFlowCoverage(filePath) {
             covered: expressions.covered_count,
             all: expressions.covered_count + expressions.uncovered_count,
             result: expressions.covered_count /
-                (expressions.covered_count + expressions.uncovered_count),
+                (expressions.covered_count + expressions.uncovered_count) *
+                100,
         }));
 };

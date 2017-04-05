@@ -43,6 +43,7 @@ cli
 
 cli
     .command('project-coverage')
+    .alias('coverage')
     .description('Gets your overall coverage')
     .action(function() {
         if (!checkForFlowToExist()) {
@@ -50,9 +51,8 @@ cli
             return;
         }
 
-        console.log('Coverage, here we go!');
         getProjectCoverage().then(({ covered, all }) => {
-            console.log('You have a coverage of', covered / all, '%\n');
+            console.log('You have a coverage of', covered / all * 100, '%\n');
             console.log('Covered Lines:', covered);
             console.log('Total Lines:', all);
         });
