@@ -1,5 +1,5 @@
 const ThrottledPromise = require('throttled-promise');
-const getFiles = requre('./get-files');
+const getFiles = require('./get-files');
 const toPromise = require('./to-promise');
 const getFlowCoverage = require('./get-flow-coverage');
 
