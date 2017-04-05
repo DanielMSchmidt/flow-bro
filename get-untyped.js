@@ -21,19 +21,16 @@ function getFlowCoverage(filePath) {
     return toPromise(execFile, './node_modules/.bin/flow', [
         'coverage',
         filePath,
-    ]).then(result => {
-        const startOfValue = result.indexOf(startValue) + startValue.length + 1;
-        const endOfValue = result.indexOf(endValue);
-
-        if (startOfValue === -1 || endOfValue === -1) {
-            throw 'wrong format';
-        }
-
-        return {
-            file: filePath,
-            result: parseFloat(result.substring(startOfValue, endOfValue)),
-        };
-    });
+        '--json',
+    ])
+        .then(result => JSON.parse(result))
+        .then(({ expressions }) => {
+            return {
+                file: filePath,
+                result: expressions.covered_count / expressions.covered_count +
+                    expressions.uncovered_count,
+            };
+        });
 }
 
 module.exports = function(amount) {
@@ -41,7 +38,8 @@ module.exports = function(amount) {
         .then(fileString => fileString.split('\n'))
         .then(files => files.filter(file => file !== ''))
         .then(files => files.filter(file => file.indexOf('.js') !== -1))
-        .then(files => files.filter(file => file.indexOf('flow-typed/npm') === -1))
+        .then(files =>
+            files.filter(file => file.indexOf('flow-typed/npm') === -1))
         .then(files =>
             files.map(
                 file =>
