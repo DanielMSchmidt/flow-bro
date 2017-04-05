@@ -1,21 +1,18 @@
-const execFile = require('child_process').execFile;
+const ThrottledPromise = require('throttled-promise');
+const getFiles = require('./get-files');
 const toPromise = require('./to-promise');
+const getFlowFileCoverage = require('./get-flow-file-coverage');
 
-module.exports = function getFlowCoverage(filePath) {
-    const startValue = 'Covered:';
-    const endValue = '\% (';
-
-    return toPromise(execFile, './node_modules/.bin/flow', [
-        'coverage',
-        filePath,
-        '--json',
-    ])
-        .then(result => JSON.parse(result))
-        .then(({ expressions }) => {
-            return {
-                file: filePath,
-                result: expressions.covered_count /
-                    (expressions.covered_count + expressions.uncovered_count),
-            };
-        });
+module.exports = function() {
+    return getFiles()
+        .then(files =>
+            files.map(
+                file =>
+                    new ThrottledPromise((resolve, reject) =>
+                        getFlowFileCoverage(file).then(
+                            result => resolve(result),
+                            error => reject(error)
+                        ))
+            ))
+        .then(filePromises => ThrottledPromise.all(filePromises, 4));
 };
