@@ -50,6 +50,7 @@ cli
             return;
         }
 
+        console.log('Coverage, here we go!');
         getProjectCoverage().then(({ covered, all }) => {
             console.log('You have a coverage of', covered / all, '%\n');
             console.log('Covered Lines:', covered);
