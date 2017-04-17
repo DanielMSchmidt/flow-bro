@@ -12,7 +12,7 @@ yarn global add flow-bro
 ## Usage
 
 ```shell
-flow-bro get-coverage 25
+flow-bro get-untyped 25
 flow-bro project-coverage
 flow-bro coverage
 ```
