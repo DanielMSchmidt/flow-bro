@@ -17,7 +17,7 @@ flow-bro project-coverage
 flow-bro coverage
 ```
 ### Commands
-#### `get-untyped <number>`
+#### `flow-bro <number>`
 
 It gets you the most untyped components in the current directory.
 Example: `flow-bro get-untyped 25`
