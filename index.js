@@ -14,6 +14,10 @@ const checkForFlowToExist = () => {
 };
 
 cli
+    .command('*', '', { noHelp: true, isDefault: true })
+    .action(() => cli.outputHelp());
+
+cli
     .command('get-untyped <number>')
     .description('returns the X least flow-typed files')
     .action(function(rawAmount) {
