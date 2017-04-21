@@ -2,9 +2,11 @@
 
 const cli = require('commander');
 const fs = require('fs');
+const Table = require('cli-table');
+
 const getUntyped = require('./get-untyped');
 const getProjectCoverage = require('./get-project-coverage');
-const Table = require('cli-table');
+const flowStatus = require('./flow-status');
 
 const checkForFlowToExist = () => {
     return fs.existsSync('./node_modules/.bin/flow');
