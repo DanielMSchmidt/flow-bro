@@ -74,8 +74,14 @@ cli
         const callFlow = () => {
             console.log('Getting new information:');
             flowStatus()
-                .then(result => console.log(result))
-                .catch(error => console.log(error));
+                .then(result => {
+                    console.log('Yay');
+                    console.log(result);
+                })
+                .catch(error => {
+                    console.log('Error:');
+                    console.log(error);
+                });
         };
 
         callFlow();
