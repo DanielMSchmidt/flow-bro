@@ -19,17 +19,17 @@ flow-bro coverage
 ### Commands
 #### `get-untyped <number>`
 
-It gets you the most untyped components in the current directory.
+It gets you the most untyped components in the current directory. <br>
 Example: `flow-bro get-untyped 25`
 
 #### `project-coverage` (alias: `coverage`)
 
-Get your overall flow coverage.
+Get your overall flow coverage. <br>
 Example: `flow-bro project-coverage`
 
 ### `watch` (alias: `w`)
 
-Watches the directory for changes and gets you flow updates.
+Watches the directory for changes and gets you flow updates. <br>
 Example: `flow-bro watch`
 
 ## Contributing
