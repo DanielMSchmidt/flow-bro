@@ -23,11 +23,11 @@ cli
         getUntyped(amount)
             .then(files => {
                 console.log(
-                    'The following files have the least flow coverage: \n',
+                    'The following files have the least flow coverage: \n'
                 );
                 var table = new Table({
                     head: ['%', 'File'],
-                    colWidths: [10, 80],
+                    colWidths: [10, 80]
                 });
                 files.forEach(({ file, result }) => table.push([result, file]));
 
