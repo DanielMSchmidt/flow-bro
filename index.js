@@ -70,17 +70,18 @@ cli
             console.log('We expect a local version of flow');
             return;
         }
+        const callFlow = () =>
+            flowStatus().then(
+                result => console.log(result),
+                error => console.log(result)
+            );
 
-        flowStatus().then(result => console.log(result));
-
-        fs.watch('./', { persistent: true, recursive: true }, () => {
-            flowStatus().then(result => console.log(result));
-        });
+        callFlow();
+        fs.watch('./', { persistent: true, recursive: true }, callFlow);
 
         process.on('SIGINT', function() {
             console.log('Caught interrupt signal');
-
-            if (i_should_exit) process.exit();
+            process.exit();
         });
     });
 
