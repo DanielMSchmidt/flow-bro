@@ -72,6 +72,16 @@ cli
         }
 
         flowStatus().then(result => console.log(result));
+
+        fs.watch('./', { persistent: true, recursive: true }, () => {
+            flowStatus().then(result => console.log(result));
+        });
+
+        process.on('SIGINT', function() {
+            console.log('Caught interrupt signal');
+
+            if (i_should_exit) process.exit();
+        });
     });
 
 cli.parse(process.argv);
