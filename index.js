@@ -7,6 +7,7 @@ const Table = require('cli-table');
 const getUntyped = require('./get-untyped');
 const getProjectCoverage = require('./get-project-coverage');
 const flowStatus = require('./flow-status');
+const stopFlowServer = require('./flow-stop');
 
 const checkForFlowToExist = () => {
     return fs.existsSync('./node_modules/.bin/flow');
@@ -70,17 +71,24 @@ cli
             console.log('We expect a local version of flow');
             return;
         }
-        const callFlow = () =>
+        const callFlow = () => {
+            console.log('Getting new information:');
             flowStatus()
                 .then(result => console.log(result))
                 .catch(error => console.log(error));
+        };
 
         callFlow();
         fs.watch('./', { persistent: true, recursive: true }, callFlow);
 
         process.on('SIGINT', function() {
-            console.log('Caught interrupt signal');
-            process.exit();
+            console.log(
+                'Bye bro! I will just kill that flow-server real quick for you.'
+            );
+
+            stopFlowServer().then(() => {
+                process.exit();
+            });
         });
     });
 
