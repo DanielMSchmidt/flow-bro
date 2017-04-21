@@ -78,7 +78,7 @@ cli
                     console.log('Yay');
                     console.log(result);
                 })
-                .catch(error => {
+                .catch((...error) => {
                     console.log('Error:');
                     console.log(error);
                 });
