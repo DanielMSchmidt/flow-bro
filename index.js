@@ -69,7 +69,7 @@ cli
             return;
         }
 
-        console.log('Watching ya');
+        flowStatus();
     });
 
 cli.parse(process.argv);
