@@ -71,7 +71,7 @@ cli
             return;
         }
 
-        flowStatus();
+        flowStatus().then(result => console.log(result));
     });
 
 cli.parse(process.argv);
