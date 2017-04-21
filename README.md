@@ -27,7 +27,7 @@ Example: `flow-bro get-untyped 25`
 Get your overall flow coverage. <br>
 Example: `flow-bro project-coverage`
 
-### `watch` (alias: `w`)
+#### `watch` (alias: `w`)
 
 Watches the directory for changes and gets you flow updates. <br>
 Example: `flow-bro watch`
