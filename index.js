@@ -89,7 +89,7 @@ cli
 
         process.on('SIGINT', function() {
             console.log(
-                'Bye bro! I will just kill that flow-server real quick for you.'
+                '\nBye bro! I will just kill that flow-server real quick for you.'
             );
 
             stopFlowServer().then(() => {
