@@ -27,6 +27,19 @@ Example: `flow-bro get-untyped 25`
 Get your overall flow coverage.
 Example: `flow-bro project-coverage`
 
+
+## Contributing
+
+To develop locally do the following:
+
+1. clone this repository
+2. run `npm link` in the cloned repo
+3. install the linked version by running `npm install -g flow-bro`
+
+### TODOs
+
+- make sure we have a pre-commit hook with prettier
+
 ## License
 
 MIT © Daniel Schmidt
