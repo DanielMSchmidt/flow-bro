@@ -23,7 +23,7 @@ cli
         getUntyped(amount)
             .then(files => {
                 console.log(
-                    'The following files have the least flow coverage: \n'
+                    'The following files have the least flow coverage: \n',
                 );
                 var table = new Table({
                     head: ['%', 'File'],
@@ -56,6 +56,20 @@ cli
             console.log('Covered Lines:', covered);
             console.log('Total Lines:', all);
         });
+    });
+
+cli
+    .command('watch')
+    .alias('w')
+    .alias('watch-that-shit')
+    .description('Watches file changes and executes flow')
+    .action(function() {
+        if (!checkForFlowToExist()) {
+            console.log('We expect a local version of flow');
+            return;
+        }
+
+        console.log('Watching ya');
     });
 
 cli.parse(process.argv);
