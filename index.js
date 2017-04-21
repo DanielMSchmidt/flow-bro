@@ -71,10 +71,9 @@ cli
             return;
         }
         const callFlow = () =>
-            flowStatus().then(
-                result => console.log(result),
-                error => console.log(result)
-            );
+            flowStatus()
+                .then(result => console.log(result))
+                .catch(error => console.log(error));
 
         callFlow();
         fs.watch('./', { persistent: true, recursive: true }, callFlow);
