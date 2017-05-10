@@ -13,8 +13,8 @@ yarn global add flow-bro
 
 ```shell
 flow-bro get-untyped 25
-flow-bro project-coverage
 flow-bro coverage
+flow-bro watch
 ```
 ### Commands
 #### `get-untyped <number>`
