@@ -72,31 +72,35 @@ cli
     }
     let terminating = false;
     let spinner = null;
+    let inProgess = false;
 
     const renewDisplay = () => {
-      if (terminating) {
+      if (terminating || inProgess) {
         return;
       }
 
+      inProgess = true;
       clear();
       if (!spinner) {
         spinner = ora("Checking the flow").start();
       }
 
-      flowStatus().then(
-        result => {
+      flowStatus()
+        .then(result => {
           spinner.succeed("Looks great, good job!");
           console.log(result);
-        },
-        ({ stdout }) => {
+        })
+        .catch(({ stdout }) => {
           if (terminating) {
             return;
           }
 
           spinner.fail("Dude, there was an error. Go fix it!");
           console.log(stdout);
-        }
-      );
+        })
+        .then(() => {
+          inProgess = false;
+        });
     };
 
     const stop = function() {
