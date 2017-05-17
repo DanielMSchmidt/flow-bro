@@ -1,16 +1,27 @@
 {
   "name": "flow-bro",
   "version": "0.4.0",
-  "description": "You personal flow helper",
+  "description": "Your personal flow type helper with features like coverage and watch mode",
   "main": "index.js",
   "author": "Daniel Schmidt <danielmschmidt92@gmail.com>",
   "license": "ISC",
+  "repository": "DanielMSchmidt/flow-bro",
+  "keywords": [
+    "cli",
+    "flow",
+    "flow-type",
+    "coverage",
+    "watch",
+    "helper"
+  ],
   "bin": {
     "flow-bro": "index.js"
   },
   "dependencies": {
+    "clear": "0.0.1",
     "cli-table": "^0.3.1",
     "commander": "^2.9.0",
+    "ora": "^1.2.0",
     "throttled-promise": "^1.0.1"
   }
 }
