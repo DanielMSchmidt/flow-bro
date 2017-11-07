@@ -3,7 +3,7 @@ const toPromise = require("./to-promise");
 
 module.exports = function getFlowCoverage(filePath) {
   const startValue = "Covered:";
-  const endValue = "\% (";
+  const endValue = "% (";
 
   return toPromise(execFile, "./node_modules/.bin/flow", [
     "coverage",
@@ -15,7 +15,8 @@ module.exports = function getFlowCoverage(filePath) {
       file: filePath,
       covered: expressions.covered_count,
       all: expressions.covered_count + expressions.uncovered_count,
-      result: expressions.covered_count /
+      result:
+        expressions.covered_count /
         (expressions.covered_count + expressions.uncovered_count) *
         100
     }));
