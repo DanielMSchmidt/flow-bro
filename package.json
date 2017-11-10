@@ -1,7 +1,8 @@
 {
   "name": "flow-bro",
-  "version": "0.4.2",
-  "description": "Your personal flow type helper with features like coverage and watch mode",
+  "version": "0.4.3",
+  "description":
+    "Your personal flow type helper with features like coverage and watch mode",
   "main": "index.js",
   "author": "Daniel Schmidt <danielmschmidt92@gmail.com>",
   "license": "ISC",
@@ -11,19 +12,9 @@
     "fmt": "prettier --write **/*.{js,json,css,md}"
   },
   "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   },
-  "keywords": [
-    "cli",
-    "flow",
-    "flow-type",
-    "coverage",
-    "watch",
-    "helper"
-  ],
+  "keywords": ["cli", "flow", "flow-type", "coverage", "watch", "helper"],
   "bin": {
     "flow-bro": "index.js"
   },
