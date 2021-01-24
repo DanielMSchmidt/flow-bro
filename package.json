@@ -30,7 +30,7 @@
   "dependencies": {
     "clear": "0.1.0",
     "cli-table": "^0.3.1",
-    "commander": "^2.14.1",
+    "commander": "^7.0.0",
     "ora": "^2.0.0",
     "throttled-promise": "^1.0.1"
   },
